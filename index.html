@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="es" class="h-full" id="html-root">
+
+<head>
+  <meta charset="UTF-8">
+  <title id="page-title">PERFECT SOUND - Transfiere tu música entre plataformas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script><!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Element SDK (obligatorio) -->
+  <script src="/_sdk/element_sdk.js"></script><!-- Estilo base obligatorio -->
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+
+    .app-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 2rem;
+        }
+  </style>
+  <style>
+    @view-transition {
+      navigation: auto;
+    }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+</head>
+
+<body class="h-full w-full m-0 p-0">
+  <div id="app-root" class="h-full w-full"><!-- Uso de configuraciones por defecto directamente en estilo inline -->
+    <div class="app-wrapper h-full w-full overflow-auto flex justify-center items-stretch">
+      <div class=" w-full max-w-5xl px-6 py-10 md:py-12 lg:py-14 flex flex-col gap-10"><!-- HEADER -->
+        <header class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div class="flex items-center gap-3"><!-- Logo PERFECT SOUND (SVG simple) -->
+            <div id="logo-wrapper" class="flex items-center justify-center rounded-2xl p-2.5 aria-hidden=" true">
+              <img src="PerfectSoundIcon.png" alt="Perfect Sound" width="40" height="40" style="display:block;" />
+            </div>
+            <div class="flex flex-col"><span id="brand-name" class="text-sm tracking-widest uppercase font-semibold"
+                style="color: #F9FAFB;"> PERFECT SOUND </span> <span id="brand-tagline" class="text-xs opacity-80"
+                style="color: #F9FAFB;"> Tu música, en cualquier plataforma </span>
+            </div>
+          </div>
+          <nav aria-label="Navegación principal" class="flex items-center gap-4 md:gap-6"><a href="#features"
+              class="text-xs md:text-sm font-medium opacity-90 hover:opacity-100 transition" style="color: #F9FAFB;"
+              id="nav-features"> Funciones </a> <a href="#how-it-works"
+              class="text-xs md:text-sm font-medium opacity-90 hover:opacity-100 transition" style="color: #F9FAFB;"
+              id="nav-how"> ¿Cómo funciona? </a>
+            <!-- Language Switcher -->
+            <div class="flex items-center gap-2 ml-2 pl-2 border-l border-gray-600">
+              <button id="lang-es" class="text-xs md:text-sm font-medium px-2 py-1 rounded lang-btn"
+                style="background-color: #fa485d; color: #F9FAFB;" aria-label="Español"> ES </button>
+              <button id="lang-en" class="text-xs md:text-sm font-medium px-2 py-1 rounded lang-btn"
+                style="color: #F9FAFB;" aria-label="English"> EN </button>
+              <style>
+                .lang-btn {
+                  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+
+                .lang-btn.active {
+                  box-shadow: 0 0 0 3px rgba(255, 107, 36, 0.5), 0 0 0 1px #ff6b24 !important;
+                }
+              </style>
+            </div>
+            <a href="#cta"
+              class="inline-flex items-center justify-center rounded-full px-4 py-1.5 text-xs md:text-sm font-semibold shadow-md transition"
+              style="background-color: #ff6b24; color: #F9FAFB;" id="nav-cta"> Descargar app </a>
+          </nav>
+        </header><!-- MAIN CONTENT -->
+        <main class="flex flex-col lg:flex-row gap-10 lg:gap-12" aria-labelledby="hero-title"><!-- HERO IZQUIERDA -->
+          <section class="flex-1 flex flex-col gap-5">
+            <h1 id="hero-title" class="font-bold leading-tight" style="color: #F9FAFB; font-size: 2.2rem;">Transfiere
+              tus playlists entre Spotify y Apple Music en segundos.</h1>
+            <p id="hero-subtitle" class="opacity-80" style="color: #F9FAFB; font-size: 0.95rem;">PERFECT SOUND mueve tus
+              playlists, álbumes y canciones favoritas entre tus plataformas de streaming sin perder nada: rápido,
+              seguro y sin complicaciones.</p><!-- Puntos clave -->
+            <div class="flex flex-col gap-3 mt-1" id="key-points">
+              <div class="flex items-start gap-2.5"><span
+                  class="inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold flex-shrink-0"
+                  style="background-color: #fa485d; color: #F9FAFB;" aria-hidden="true"> 1 </span>
+                <p class="text-sm" style="color: #F9FAFB;">Conecta tus cuentas de Spotify y Apple Music.</p>
+              </div>
+              <div class="flex items-start gap-2.5"><span
+                  class="inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold flex-shrink-0"
+                  style="background-color: #fa485d; color: #F9FAFB;" aria-hidden="true"> 2 </span>
+                <p class="text-sm" style="color: #F9FAFB;">Elige qué playlists quieres transferir o sincronizar.</p>
+              </div>
+              <div class="flex items-start gap-2.5"><span
+                  class="inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold flex-shrink-0"
+                  style="background-color: #fa485d; color: #F9FAFB;" aria-hidden="true"> 3 </span>
+                <p class="text-sm" style="color: #F9FAFB;">Deja que PERFECT SOUND haga la magia en segundo plano.</p>
+              </div>
+            </div><!-- CTA PRINCIPAL -->
+            <section id="cta" class="mt-3 flex flex-col gap-3" aria-label="Descargar PERFECT SOUND">
+              
+              <p class="text-xs opacity-70" style="color: #F9FAFB;">Disponible para iOS y Android.</p>
+            </section><!-- Badges de plataformas -->
+            <section class="mt-4 flex flex-wrap items-center gap-3" aria-label="Disponible en plataformas móviles">
+              <div class="app-buttons">
+                        <a href="#" class="app-button app-store">
+                            <i class="fab fa-apple"></i><br>App Store
+                        </a>
+                        <a href="#" class="app-button google-play">
+                            <i class="fab fa-google-play"></i><br>Google Play
+                        </a>
+                    </div>
+            </section>
+          </section><!-- MOCKUP / LADO DERECHO -->
+          <aside class="flex-1" aria-label="Vista previa de la app">
+            <div class="relative rounded-3xl p-5 md:p-6 h-full flex flex-col justify-between shadow-xl" style="
+                background: radial-gradient(circle at top left, #fa485d 0%, #0a0a0a 45%, #1a1a1a 100%);
+              "><!-- Tarjeta interior tipo móvil -->
+              <div class="mx-auto rounded-[1.9rem] p-4 w-full max-w-xs shadow-2xl border"
+                style="border-color: rgba(249, 250, 251, 0.12); background-color: rgba(10, 10, 10, 0.9);">
+                <!-- Barra superior móvil -->
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-2">
+                    <div class="h-7 w-7 rounded-2xl flex items-center justify-center" style="background:#000;"
+                      aria-hidden="true"><span class="text-[0.6rem] font-bold" style="color: #F9FAFB;">PS</span>
+                    </div><span class="text-xs font-semibold tracking-wide" style="color: #F9FAFB;"> PERFECT SOUND
+                    </span>
+                  </div><span class="text-[0.6rem]" style="color: #F9FAFB;">100%</span>
+                </div><!-- Tarjeta de transferencia -->
+                <div class="rounded-2xl p-3 mb-3 flex flex-col gap-3" style="background-color: #1a1a1a;">
+                  <div class="flex items-center justify-between gap-2"><!-- Spotify -->
+                    <div class="flex flex-col items-center text-[0.6rem]">
+                      <div class="h-8 w-8 rounded-full flex items-center justify-center mb-1"
+                        style="background-color: #0a0a0a; color: #1DB954;" aria-hidden="true">
+                        <!-- Icono simple Spotify -->
+                        <svg width="16" height="16" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="12" cy="12" r="10" fill="#1DB954" />
+                          <path d="M8 9c2.2-.6 5.1-.3 6.9.4" fill="none" stroke="#050816" stroke-width="1.2"
+                            stroke-linecap="round" />
+                          <path d="M8.5 11.5c1.8-.4 4.2-.2 5.6.4" fill="none" stroke="#050816" stroke-width="1.1"
+                            stroke-linecap="round" />
+                          <path d="M9 14c1.4-.3 3.2-.1 4.3.3" fill="none" stroke="#050816" stroke-width="1"
+                            stroke-linecap="round" />
+                        </svg>
+                      </div><span style="color: #F9FAFB;">Spotify</span>
+                    </div><!-- Flechas -->
+                    <div class="flex flex-col items-center gap-1 text-[0.6rem]" style="color: #F9FAFB;">
+                      <span>Transfer</span>
+                      <div class="flex items-center gap-1" aria-hidden="true"><span>⇄</span>
+                      </div>
+                    </div><!-- Apple Music -->
+                    <div class="flex flex-col items-center text-[0.6rem]">
+                      <div class="h-8 w-8 rounded-full flex items-center justify-center mb-1"
+                        style="background-color: #050816; color: #F9FAFB;" aria-hidden="true">
+                        <!-- Icono simple Apple Music -->
+                        <svg width="16" height="16" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <rect x="4" y="4" width="16" height="16" rx="4" fill="#FA2D48" />
+                          <path
+                            d="M14 8.5V15a2 2 0 1 1-1-1.73V9.3l-2.5.6V15a2 2 0 1 1-1-1.73V9.1c0-.4.26-.75.64-.85l4-1a.9.9 0 0 1 1.11.87Z"
+                            fill="#F9FAFB" />
+                        </svg>
+                      </div><span style="color: #F9FAFB;">Apple Music</span>
+                    </div>
+                  </div><!-- Progreso -->
+                  <div class="mt-1">
+                    <div class="flex justify-between text-[0.6rem] mb-1" style="color: #F9FAFB;"><span>Playlist:
+                        Roadtrip Vibes</span> <span>68%</span>
+                    </div>
+                    <div class="w-full h-1.5 rounded-full overflow-hidden" style="background-color: #050816;">
+                      <div class="h-full rounded-full"
+                        style="width: 68%; background: linear-gradient(90deg, #fa485d, #ff6b24);"></div>
+                    </div>
+                  </div>
+                </div><!-- Lista pequeña -->
+                <div class="flex flex-col gap-1.5">
+                  <div class="flex items-center justify-between text-[0.6rem]"><span style="color: #F9FAFB;">Top 50
+                      Global</span> <span class="opacity-70" style="color: #F9FAFB;">Completado</span>
+                  </div>
+                  <div class="flex items-center justify-between text-[0.6rem]"><span style="color: #F9FAFB;">Focus &amp;
+                      Chill</span> <span class="opacity-70" style="color: #F9FAFB;">En cola</span>
+                  </div>
+                  <div class="flex items-center justify-between text-[0.6rem]"><span
+                      style="color: #F9FAFB;">Descubrimiento semanal</span> <span class="opacity-70"
+                      style="color: #F9FAFB;">Próximo</span>
+                  </div>
+                </div>
+              </div><!-- Etiqueta flotante -->
+              <div class="mt-4 flex flex-wrap gap-2">
+                <div class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[0.65rem] font-medium"
+                  style="background-color: rgba(17, 24, 39, 0.9); color: #F9FAFB;"><i class="fas fa-bolt"></i>
+                  <span>Sincronización automática</span>
+                </div>
+                <div class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[0.65rem] font-medium"
+                  style="background-color: rgba(17, 24, 39, 0.9); color: #F9FAFB;"><i class="fas fa-headphones"></i>
+                  <span>No pierdes tus likes</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </main><!-- SECCIÓN FUNCIONES -->
+        <section id="features" class="mt-4 flex flex-col gap-4">
+          <h2 class="text-lg font-semibold" style="color: #F9FAFB;">Diseñada para quienes viven con auriculares puestos.
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4"><!-- Feature 1 -->
+            <article class="rounded-2xl p-4 flex flex-col gap-2 h-full" style="background-color: #111827;">
+              <h3 class="text-sm font-semibold flex items-center gap-2" style="color: #F9FAFB;"><span
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-full flex-shrink-0"
+                  style="background-color: #fa485d; color: #F9FAFB; min-width: 24px;" aria-hidden="true"><i
+                    class="fas fa-exchange-alt"
+                    style="font-size: 0.75rem; line-height: 1;"></i></span><span>Transferencias bidireccionales</span>
+              </h3>
+              <p class="text-xs opacity-80" style="color: #F9FAFB;">Pasa tus playlists de Spotify a Apple Music y al
+                revés, conservando orden, carátulas y n��mero de canciones siempre que estén disponibles.</p>
+            </article><!-- Feature 2 -->
+            <article class="rounded-2xl p-4 flex flex-col gap-2 h-full" style="background-color: #111827;">
+              <h3 class="text-sm font-semibold flex items-center gap-2" style="color: #F9FAFB;"><span
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-full flex-shrink-0"
+                  style="background-color: #fa485d; color: #F9FAFB; min-width: 24px;" aria-hidden="true"><i
+                    class="fas fa-sync-alt" style="font-size: 0.75rem; line-height: 1;"></i></span><span>Sincronización
+                  continua</span></h3>
+              <p class="text-xs opacity-80" style="color: #F9FAFB;">Activa la sincronización automática para que cada
+                nuevo tema que añadas en una plataforma aparezca también en la otra.</p>
+            </article><!-- Feature 3 -->
+            <article class="rounded-2xl p-4 flex flex-col gap-2 h-full" style="background-color: #111827;">
+              <h3 class="text-sm font-semibold flex items-center gap-2" style="color: #F9FAFB;"><span
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-full flex-shrink-0"
+                  style="background-color: #fa485d; color: #F9FAFB; min-width: 24px;" aria-hidden="true"><i
+                    class="fas fa-shield-alt" style="font-size: 0.75rem; line-height: 1;"></i></span><span>Tus cuentas,
+                  siempre seguras</span></h3>
+              <p class="text-xs opacity-80" style="color: #F9FAFB;">PERFECT SOUND utiliza conexiones seguras y no
+                almacena tus contraseñas. Tú decides qué se transfiere y cuándo.</p>
+            </article>
+          </div>
+        </section><!-- SECCIÓN CÓMO FUNCIONA -->
+        <section id="how-it-works" class="mt-4 flex flex-col gap-4">
+          <h2 class="text-lg font-semibold" style="color: #F9FAFB;">¿Cómo funciona PERFECT SOUND?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <article class="rounded-2xl p-4 flex flex-col gap-2 h-full" style="background-color: #111827;"><span
+                class="inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold mb-1"
+                style="background-color: #ff6b24; color: #F9FAFB;"> 1 </span>
+              <h3 class="text-sm font-semibold" style="color: #F9FAFB;">Conecta tus servicios</h3>
+              <p class="text-xs opacity-80" style="color: #F9FAFB;">Inicia sesión con tus cuentas de Spotify y Apple
+                Music desde la app. Solo te llevará unos segundos.</p>
+            </article>
+            <article class="rounded-2xl p-4 flex flex-col gap-2 h-full" style="background-color: #111827;"><span
+                class="inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold mb-1"
+                style="background-color: #ff6b24; color: #F9FAFB;"> 2 </span>
+              <h3 class="text-sm font-semibold" style="color: #F9FAFB;">Elige qué mover</h3>
+              <p class="text-xs opacity-80" style="color: #F9FAFB;">Selecciona tus playlists, álbumes o canciones
+                guardadas para transferirlas o mantenerlas sincronizadas.</p>
+            </article>
+            <article class="rounded-2xl p-4 flex flex-col gap-2 h-full" style="background-color: #111827;"><span
+                class="inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold mb-1"
+                style="background-color: #ff6b24; color: #F9FAFB;"> 3 </span>
+              <h3 class="text-sm font-semibold" style="color: #F9FAFB;">Disfruta y olvídate</h3>
+              <p class="text-xs opacity-80" style="color: #F9FAFB;">Nosotros nos encargamos del resto. Tú solo disfrutas
+                de tu música en la plataforma que quieras, cuando quieras.</p>
+            </article>
+          </div>
+        </section><!-- FOOTER SIMPLE -->
+        <footer class="mt-6 flex flex-col gap-6 pt-6 border-t border-gray-700">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <p id="footer-text" class="text-[0.7rem] opacity-70" style="color: #F9FAFB;">PERFECT SOUND no está afiliada
+              a Spotify o Apple Music. Los logotipos y marcas comerciales pertenecen a sus respectivos propietarios.</p>
+            <div class="flex flex-wrap gap-3 text-[0.7rem]" style="color: #F9FAFB;">
+              <a href="privacy-policy.html" class="opacity-70 hover:opacity-100 transition"
+                id="footer-privacy-es">Política de Privacidad</a>
+              <span class="opacity-50">•</span>
+              <a href="privacy-policy.html" class="opacity-70 hover:opacity-100 transition" id="footer-privacy-en"
+                style="display: none;">Privacy Policy</a>
+            </div>
+          </div>
+          <p class="text-[0.7rem] opacity-60" style="color: #F9FAFB;">Disponible en iOS y Android.</p>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Translations
+    const translations = {
+      es: {
+        page_title: "PERFECT SOUND - Transfiere tu música entre plataformas",
+        brand_tagline: "Tu música, en cualquier plataforma",
+        nav_features: "Funciones",
+        nav_how: "¿Cómo funciona?",
+        nav_cta: "Descargar app",
+        hero_title: "Transfiere tus playlists entre Spotify y Apple Music en segundos.",
+        hero_subtitle: "PERFECT SOUND mueve tus playlists, álbumes y canciones favoritas entre tus plataformas de streaming sin perder nada: rápido, seguro y sin complicaciones.",
+        key_point_1: "Conecta tus cuentas de Spotify y Apple Music.",
+        key_point_2: "Elige qué playlists quieres transferir o sincronizar.",
+        key_point_3: "Deja que PERFECT SOUND haga la magia en segundo plano.",
+        cta_primary: "Empezar gratis",
+        cta_secondary: "Ver cómo funciona",
+        cta_note: "Disponible para iOS y Android.",
+        ios_available: "Disponible en iOS",
+        android_available: "Disponible en Android",
+        features_title: "Diseñada para quienes viven con auriculares puestos.",
+        feature_1_title: "Transferencias bidireccionales",
+        feature_1_desc: "Pasa tus playlists de Spotify a Apple Music y al revés, conservando orden, carátulas y número de canciones siempre que estén disponibles.",
+        feature_2_title: "Sincronización continua",
+        feature_2_desc: "Activa la sincronización automática para que cada nuevo tema que añadas en una plataforma aparezca también en la otra.",
+        feature_3_title: "Tus cuentas, siempre seguras",
+        feature_3_desc: "PERFECT SOUND utiliza conexiones seguras y no almacena tus contraseñas. Tú decides qué se transfiere y cuándo.",
+        how_title: "¿Cómo funciona PERFECT SOUND?",
+        how_1_title: "Conecta tus servicios",
+        how_1_desc: "Inicia sesión con tus cuentas de Spotify y Apple Music desde la app. Solo te llevará unos segundos.",
+        how_2_title: "Elige qué mover",
+        how_2_desc: "Selecciona tus playlists, álbumes o canciones guardadas para transferirlas o mantenerlas sincronizadas.",
+        how_3_title: "Disfruta y olvídate",
+        how_3_desc: "Nosotros nos encargamos del resto. Tú solo disfrutas de tu música en la plataforma que quieras, cuando quieras.",
+        footer_text: "PERFECT SOUND no está afiliada a Spotify o Apple Music. Los logotipos y marcas comerciales pertenecen a sus respectivos propietarios.",
+        footer_disclaimer: "Disponible en iOS y Android.",
+        privacy_policy: "Política de Privacidad",
+        auto_sync: "Sincronización automática",
+        no_lose_likes: "No pierdes tus likes"
+      },
+      en: {
+        page_title: "PERFECT SOUND - Transfer your music between platforms",
+        brand_tagline: "Your music, any platform",
+        nav_features: "Features",
+        nav_how: "How it works?",
+        nav_cta: "Download app",
+        hero_title: "Transfer your playlists between Spotify and Apple Music in seconds.",
+        hero_subtitle: "PERFECT SOUND moves your playlists, albums, and favorite songs between your streaming platforms without losing anything: fast, secure, and hassle-free.",
+        key_point_1: "Connect your Spotify and Apple Music accounts.",
+        key_point_2: "Choose which playlists you want to transfer or sync.",
+        key_point_3: "Let PERFECT SOUND do the magic in the background.",
+        cta_primary: "Get started free",
+        cta_secondary: "See how it works",
+        cta_note: "Available for iOS and Android.",
+        ios_available: "Available on iOS",
+        android_available: "Available on Android",
+        features_title: "Designed for those who live with headphones on.",
+        feature_1_title: "Bidirectional transfers",
+        feature_1_desc: "Transfer your playlists from Spotify to Apple Music and back, preserving order, covers, and number of songs whenever available.",
+        feature_2_title: "Continuous sync",
+        feature_2_desc: "Enable automatic synchronization so every new song you add on one platform also appears on the other.",
+        feature_3_title: "Your accounts, always safe",
+        feature_3_desc: "PERFECT SOUND uses secure connections and never stores your passwords. You decide what gets transferred and when.",
+        how_title: "How does PERFECT SOUND work?",
+        how_1_title: "Connect your services",
+        how_1_desc: "Log in with your Spotify and Apple Music accounts from the app. It will only take a few seconds.",
+        how_2_title: "Choose what to move",
+        how_2_desc: "Select your playlists, albums, or saved songs to transfer or keep synchronized.",
+        how_3_title: "Enjoy and forget",
+        how_3_desc: "We handle the rest. You just enjoy your music on the platform you want, whenever you want.",
+        footer_text: "PERFECT SOUND is not affiliated with Spotify or Apple Music. Logos and trademarks belong to their respective owners.",
+        footer_disclaimer: "Available on iOS and Android.",
+        privacy_policy: "Privacy Policy",
+        auto_sync: "Automatic synchronization",
+        no_lose_likes: "You don't lose your likes"
+      }
+    };
+
+    // Current language
+    let currentLanguage = localStorage.getItem("language") || "en";
+
+    // Language switcher
+    function setLanguage(lang) {
+      currentLanguage = lang;
+      localStorage.setItem("language", lang);
+      updatePageLanguage();
+      updateLanguageButtons();
+    }
+
+    function updateLanguageButtons() {
+      const btnES = document.getElementById("lang-es");
+      const btnEN = document.getElementById("lang-en");
+      btnES.classList.remove('active');
+      btnEN.classList.remove('active');
+      if (currentLanguage === "es") {
+        btnES.style.backgroundColor = "#fa485d";
+        btnES.style.opacity = "1";
+        btnEN.style.backgroundColor = "transparent";
+        btnEN.style.opacity = "0.5";
+        btnES.classList.add('active');
+      } else {
+        btnEN.style.backgroundColor = "#fa485d";
+        btnEN.style.opacity = "1";
+        btnES.style.backgroundColor = "transparent";
+        btnES.style.opacity = "0.5";
+        btnEN.classList.add('active');
+      }
+    }
+
+    function updatePageLanguage() {
+      const t = translations[currentLanguage];
+      const html = document.getElementById("html-root");
+      html.lang = currentLanguage;
+
+      // Update title
+      document.getElementById("page-title").textContent = t.page_title;
+      document.title = t.page_title;
+
+      // Update brand
+      document.getElementById("brand-tagline").textContent = t.brand_tagline;
+
+      // Update nav
+      document.getElementById("nav-features").textContent = t.nav_features;
+      document.getElementById("nav-how").textContent = t.nav_how;
+      document.getElementById("nav-cta").textContent = t.nav_cta;
+
+      // Update hero
+      document.getElementById("hero-title").textContent = t.hero_title;
+      document.getElementById("hero-subtitle").textContent = t.hero_subtitle;
+
+      // Update key points
+      const keyPoints = document.querySelectorAll("#key-points .flex");
+      if (keyPoints[0]) keyPoints[0].querySelector("p").textContent = t.key_point_1;
+      if (keyPoints[1]) keyPoints[1].querySelector("p").textContent = t.key_point_2;
+      if (keyPoints[2]) keyPoints[2].querySelector("p").textContent = t.key_point_3;
+
+      // Update CTA buttons
+      document.getElementById("primary-cta").textContent = t.cta_primary;
+      document.getElementById("secondary-cta").textContent = t.cta_secondary;
+      document.querySelector("#cta p.text-xs").textContent = t.cta_note;
+
+      // Update platform badges
+      const badges = document.querySelectorAll(".mt-4 .inline-flex");
+      if (badges[0]) badges[0].querySelector("span:last-child").textContent = t.ios_available;
+      if (badges[1]) badges[1].querySelector("span:last-child").textContent = t.android_available;
+
+      // Update features section
+      document.querySelector("#features > h2").textContent = t.features_title;
+      const featureArticles = document.querySelectorAll("#features article");
+      if (featureArticles[0]) {
+        const h3 = featureArticles[0].querySelector("h3");
+        const spans = h3.querySelectorAll("span");
+        if (spans.length > 1) spans[1].textContent = t.feature_1_title;
+        featureArticles[0].querySelector("p").textContent = t.feature_1_desc;
+      }
+      if (featureArticles[1]) {
+        const h3 = featureArticles[1].querySelector("h3");
+        const spans = h3.querySelectorAll("span");
+        if (spans.length > 1) spans[1].textContent = t.feature_2_title;
+        featureArticles[1].querySelector("p").textContent = t.feature_2_desc;
+      }
+      if (featureArticles[2]) {
+        const h3 = featureArticles[2].querySelector("h3");
+        const spans = h3.querySelectorAll("span");
+        if (spans.length > 1) spans[1].textContent = t.feature_3_title;
+        featureArticles[2].querySelector("p").textContent = t.feature_3_desc;
+      }
+
+      // Update how it works section
+      document.querySelector("#how-it-works > h2").textContent = t.how_title;
+      const howArticles = document.querySelectorAll("#how-it-works article");
+      if (howArticles[0]) {
+        howArticles[0].querySelector("h3").textContent = t.how_1_title;
+        howArticles[0].querySelector("p").textContent = t.how_1_desc;
+      }
+      if (howArticles[1]) {
+        howArticles[1].querySelector("h3").textContent = t.how_2_title;
+        howArticles[1].querySelector("p").textContent = t.how_2_desc;
+      }
+      if (howArticles[2]) {
+        howArticles[2].querySelector("h3").textContent = t.how_3_title;
+        howArticles[2].querySelector("p").textContent = t.how_3_desc;
+      }
+
+      // Update footer
+      document.getElementById("footer-text").textContent = t.footer_text;
+      document.querySelectorAll("footer p.text-\\[0.7rem\\]")[1].textContent = t.footer_disclaimer;
+
+      // Update privacy policy links
+      const footerPrivacyES = document.getElementById("footer-privacy-es");
+      const footerPrivacyEN = document.getElementById("footer-privacy-en");
+
+      if (currentLanguage === "es") {
+        footerPrivacyES.style.display = "inline";
+        footerPrivacyEN.style.display = "none";
+        footerPrivacyES.href = "privacy-policy.html";
+        footerPrivacyES.textContent = t.privacy_policy;
+      } else {
+        footerPrivacyES.style.display = "none";
+        footerPrivacyEN.style.display = "inline";
+        footerPrivacyEN.href = "privacy-policy-en.html";
+        footerPrivacyEN.textContent = t.privacy_policy;
+      }
+    }
+
+    // Event listeners for language buttons
+    document.getElementById("lang-es").addEventListener("click", () => setLanguage("es"));
+    document.getElementById("lang-en").addEventListener("click", () => setLanguage("en"));
+
+    // Config por defecto
+    const defaultConfig = {
+      background_color: "#0a0a0a",
+      surface_color: "#1a1a1a",
+      text_color: "#F9FAFB",
+      primary_action_color: "#fa485d",
+      secondary_action_color: "#ff6b24",
+      font_family: "System UI",
+      font_size: 16
+    };
+
+    // Referencias a elementos que vamos a actualizar
+    const elements = {
+      wrapper: document.querySelector(".app-wrapper"),
+      cards: document.querySelectorAll("#features article, #how-it-works article"),
+      textNodes: document.querySelectorAll(
+        "h1, h2, h3, p, a, button, span, footer p, nav a"
+      ),
+      primaryButtons: document.querySelectorAll("#primary-cta"),
+      secondaryButtons: document.querySelectorAll("#secondary-cta, header nav a[href='#cta']"),
+      logoWrapper: document.getElementById("logo-wrapper"),
+      heroTitle: document.getElementById("hero-title"),
+      heroSubtitle: document.getElementById("hero-subtitle"),
+      footerText: document.getElementById("footer-text")
+    };
+
+    function applyConfig(config) {
+      const current = Object.assign({}, defaultConfig, config || {});
+      const fontStack = `${current.font_family}, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+      const base = current.font_size;
+
+      // Fondo principal
+      if (elements.wrapper) {
+        elements.wrapper.style.background = current.background_color;
+        elements.wrapper.style.fontFamily = fontStack;
+        elements.wrapper.style.color = current.text_color;
+      }
+
+      // Tarjetas
+      elements.cards.forEach((card) => {
+        card.style.backgroundColor = current.surface_color;
+        card.style.color = current.text_color;
+      });
+
+      // Texto genérico
+      elements.textNodes.forEach((node) => {
+        node.style.color = current.text_color;
+        node.style.fontFamily = fontStack;
+        // Escala de tamaños según jerarquía
+        if (node.tagName === "H1") {
+          node.style.fontSize = base * 2 + "px";
+        } else if (node.tagName === "H2") {
+          node.style.fontSize = base * 1.5 + "px";
+        } else if (node.tagName === "H3") {
+          node.style.fontSize = base * 1.1 + "px";
+        } else if (node.tagName === "P") {
+          node.style.fontSize = base * 0.9 + "px";
+        } else if (node.tagName === "A" || node.tagName === "BUTTON" || node.tagName === "SPAN") {
+          node.style.fontSize = base * 0.8 + "px";
+        }
+      });
+
+      // Botones primarios
+      elements.primaryButtons.forEach((btn) => {
+        btn.style.backgroundColor = current.primary_action_color;
+        btn.style.color = current.text_color;
+      });
+
+      // Botones secundarios
+      elements.secondaryButtons.forEach((btn) => {
+        btn.style.borderColor = current.secondary_action_color;
+        if (btn.tagName === "A") {
+          btn.style.backgroundColor = current.secondary_action_color;
+          btn.style.color = "#F9FAFB";
+        } else {
+          btn.style.color = current.text_color;
+        }
+      });
+
+
+
+      // Textos editables
+      if (elements.heroTitle) {
+        elements.heroTitle.textContent = current.hero_title || defaultConfig.hero_title;
+      }
+      if (elements.heroSubtitle) {
+        elements.heroSubtitle.textContent =
+          current.hero_subtitle || defaultConfig.hero_subtitle;
+      }
+      if (elements.footerText) {
+        elements.footerText.textContent =
+          current.footer_text || defaultConfig.footer_text;
+      }
+    }
+
+    // Inicializar con valores por defecto
+    applyConfig(defaultConfig);
+
+    // Inicialización Element SDK (si está disponible)
+    if (window.elementSdk && typeof window.elementSdk.init === "function") {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          applyConfig(config);
+        },
+        mapToCapabilities: (config) => {
+          const cfg = Object.assign({}, defaultConfig, config || {});
+          return {
+            recolorables: [
+              {
+                get: () => cfg.background_color,
+                set: (value) => {
+                  cfg.background_color = value;
+                  window.elementSdk.setConfig({ background_color: value });
+                }
+              },
+              {
+                get: () => cfg.surface_color,
+                set: (value) => {
+                  cfg.surface_color = value;
+                  window.elementSdk.setConfig({ surface_color: value });
+                }
+              },
+              {
+                get: () => cfg.text_color,
+                set: (value) => {
+                  cfg.text_color = value;
+                  window.elementSdk.setConfig({ text_color: value });
+                }
+              },
+              {
+                get: () => cfg.primary_action_color,
+                set: (value) => {
+                  cfg.primary_action_color = value;
+                  window.elementSdk.setConfig({ primary_action_color: value });
+                }
+              },
+              {
+                get: () => cfg.secondary_action_color,
+                set: (value) => {
+                  cfg.secondary_action_color = value;
+                  window.elementSdk.setConfig({ secondary_action_color: value });
+                }
+              }
+            ],
+            borderables: [],
+            fontEditable: {
+              get: () => cfg.font_family,
+              set: (value) => {
+                cfg.font_family = value;
+                window.elementSdk.setConfig({ font_family: value });
+              }
+            },
+            fontSizeable: {
+              get: () => cfg.font_size,
+              set: (value) => {
+                cfg.font_size = value;
+                window.elementSdk.setConfig({ font_size: value });
+              }
+            }
+          };
+        },
+        mapToEditPanelValues: (config) => {
+          const cfg = Object.assign({}, defaultConfig, config || {});
+          return new Map([
+            ["hero_title", translations[currentLanguage].hero_title],
+            ["hero_subtitle", translations[currentLanguage].hero_subtitle],
+            ["footer_text", translations[currentLanguage].footer_text]
+          ]);
+        }
+      });
+    }
+
+    // Initialize language on page load
+    document.addEventListener("DOMContentLoaded", () => {
+      updateLanguageButtons();
+      updatePageLanguage();
+      applyConfig(defaultConfig);
+    });
+
+    // Pequeña interacción: botones de CTA muestran un cambio visual en la propia landing
+    (function setupCtaInteractions() {
+      const primary = document.getElementById("primary-cta");
+      const secondary = document.getElementById("secondary-cta");
+      const heroSubtitle = document.getElementById("hero-subtitle");
+
+      if (primary && heroSubtitle) {
+        primary.addEventListener("click", function () {
+          const t = translations[currentLanguage];
+          const message = currentLanguage === "es"
+            ? "Escanea el código o añade PERFECT SOUND a tu pantalla de inicio y empieza a mover tu música hoy mismo."
+            : "Scan the code or add PERFECT SOUND to your home screen and start moving your music today.";
+          heroSubtitle.textContent = message;
+        });
+      }
+
+      if (secondary) {
+        secondary.addEventListener("click", function () {
+          const section = document.getElementById("how-it-works");
+          if (section) {
+            section.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      }
+    })();
+  </script>
+  <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9ab5c2e074e3a5e7',t:'MTc2NTI5NjUwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
